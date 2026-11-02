@@ -4,8 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "website/public/images/*.b64.part*"
-      - "website/public/images/*.jpg.b64"
+      - "website/public/images/.materialize-ready"
   workflow_dispatch:
 
 permissions:
@@ -26,20 +25,19 @@ jobs:
           set -euo pipefail
           cd website/public/images
           shopt -s nullglob
-
           for name in experience-bg how-bg systems hero medical logistics; do
-            parts=(${name}.jpg.b64.part*)
-            if [ ${#parts[@]} -gt 0 ]; then
-              # locale C ensures part00 < part01 < ...
-              LC_ALL=C cat "${parts[@]}" > "${name}.jpg.b64"
-              rm -f "${parts[@]}"
+            parts=(${name}.jpg.b64.p*)
+            if [ ${#parts[@]} -eq 0 ]; then
+              echo "missing parts for $name" >&2
+              exit 1
             fi
-            if [ -f "${name}.jpg.b64" ]; then
-              base64 -d "${name}.jpg.b64" > "${name}.jpg"
-              python3 -c "import pathlib; p=pathlib.Path('${name}.jpg'); b=p.read_bytes()[:3]; assert b==bytes([255,216,255]), b; print(p, 'ok', p.stat().st_size)"
-              rm -f "${name}.jpg.b64"
-            fi
+            LC_ALL=C cat "${parts[@]}" > "${name}.jpg.b64"
+            rm -f "${parts[@]}"
+            base64 -d "${name}.jpg.b64" > "${name}.jpg"
+            python3 -c "import pathlib; p=pathlib.Path('${name}.jpg'); b=p.read_bytes()[:3]; assert b==bytes([255,216,255]), b; print(p, 'ok', p.stat().st_size)"
+            rm -f "${name}.jpg.b64"
           done
+          rm -f .materialize-ready
 
       - name: Restore local asset() helper
         run: |
@@ -59,6 +57,9 @@ jobs:
             '' \
             'Compressed JPEG assets for the Vincul marketing site.' \
             > website/public/images/README.md
+
+      - name: Cleanup probes
+        run: rm -f website/public/images/_probe.jpg website/public/images/_probe2.jpg
 
       - name: Commit binary images
         run: |
