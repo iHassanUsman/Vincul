@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
     paths:
+      - "website/public/images/*.b64.part*"
       - "website/public/images/*.jpg.b64"
   workflow_dispatch:
 
@@ -20,21 +21,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Decode base64 JPEGs into binary files
+      - name: Assemble and decode JPEG payloads
         run: |
           set -euo pipefail
           cd website/public/images
           shopt -s nullglob
-          files=(*.jpg.b64)
-          if [ ${#files[@]} -eq 0 ]; then
-            echo "No .jpg.b64 files; nothing to do"
-            exit 0
-          fi
-          for f in "${files[@]}"; do
-            out="${f%.b64}"
-            base64 -d "$f" > "$out"
-            python3 -c "import pathlib; p=pathlib.Path('$out'); b=p.read_bytes()[:3]; assert b==bytes([255,216,255]), b; print(p, 'ok', p.stat().st_size)"
-            rm "$f"
+
+          for name in experience-bg how-bg systems hero medical logistics; do
+            parts=(${name}.jpg.b64.part*)
+            if [ ${#parts[@]} -gt 0 ]; then
+              # locale C ensures part00 < part01 < ...
+              LC_ALL=C cat "${parts[@]}" > "${name}.jpg.b64"
+              rm -f "${parts[@]}"
+            fi
+            if [ -f "${name}.jpg.b64" ]; then
+              base64 -d "${name}.jpg.b64" > "${name}.jpg"
+              python3 -c "import pathlib; p=pathlib.Path('${name}.jpg'); b=p.read_bytes()[:3]; assert b==bytes([255,216,255]), b; print(p, 'ok', p.stat().st_size)"
+              rm -f "${name}.jpg.b64"
+            fi
           done
 
       - name: Restore local asset() helper
@@ -48,6 +52,14 @@ jobs:
             '}' \
             > website/src/base.ts
 
+      - name: Update images README
+        run: |
+          printf '%s\n' \
+            '# Images' \
+            '' \
+            'Compressed JPEG assets for the Vincul marketing site.' \
+            > website/public/images/README.md
+
       - name: Commit binary images
         run: |
           git config user.name "github-actions[bot]"
@@ -57,5 +69,5 @@ jobs:
             echo "No changes"
             exit 0
           fi
-          git commit -m "Materialize compressed JPEGs from base64 payloads"
+          git commit -m "Materialize compressed JPEGs from base64 part payloads"
           git push
