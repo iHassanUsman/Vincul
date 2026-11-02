@@ -1,0 +1,61 @@
+name: Materialize site images
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "website/public/images/*.jpg.b64"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: materialize-images
+  cancel-in-progress: true
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Decode base64 JPEGs into binary files
+        run: |
+          set -euo pipefail
+          cd website/public/images
+          shopt -s nullglob
+          files=(*.jpg.b64)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No .jpg.b64 files; nothing to do"
+            exit 0
+          fi
+          for f in "${files[@]}"; do
+            out="${f%.b64}"
+            base64 -d "$f" > "$out"
+            python3 -c "import pathlib; p=pathlib.Path('$out'); b=p.read_bytes()[:3]; assert b==bytes([255,216,255]), b; print(p, 'ok', p.stat().st_size)"
+            rm "$f"
+          done
+
+      - name: Restore local asset() helper
+        run: |
+          printf '%s\n' \
+            '/** Prefix public assets for GitHub Pages (or any non-root base). */' \
+            'export function asset(path: string): string {' \
+            "  const base = import.meta.env.BASE_URL || '/'" \
+            "  const clean = path.replace(/^\\//, '')" \
+            '  return `${base}${clean}`' \
+            '}' \
+            > website/src/base.ts
+
+      - name: Commit binary images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A website/public/images website/src/base.ts
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+          git commit -m "Materialize compressed JPEGs from base64 payloads"
+          git push
