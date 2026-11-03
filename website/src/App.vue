@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import SiteHeader from './components/SiteHeader.vue'
 import HeroSection from './components/HeroSection.vue'
+import PainPointsSection from './components/PainPointsSection.vue'
 import ServicesSection from './components/ServicesSection.vue'
 import ProofSection from './components/ProofSection.vue'
 import ArchitectureSection from './components/ArchitectureSection.vue'
@@ -15,10 +16,11 @@ import SiteFooter from './components/SiteFooter.vue'
 </script>
 
 <template>
-  <a class="skip-link" href="#services">Skip to services</a>
+  <a class="skip-link" href="#problems">Skip to content</a>
   <SiteHeader />
   <main>
     <HeroSection />
+    <PainPointsSection />
     <ServicesSection />
     <ProofSection />
     <ArchitectureSection />

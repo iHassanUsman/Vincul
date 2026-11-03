@@ -5,7 +5,7 @@
 **Effective date:** {{YYYY-MM-DD}}
 
 ## 1. Purpose
-Vincul will {{integrate AI chatbot / upgrade Java / automate booking & invoices}} for Client’s existing systems as described below.
+Vincul will {{integrate AI assistants / replace repetitive workflows with AI / upgrade blocking legacy platforms}} for Client’s existing systems as described below.
 
 ## 2. Scope of work
 Detailed tasks, systems, and environments.

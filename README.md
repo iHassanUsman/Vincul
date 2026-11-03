@@ -1,6 +1,6 @@
 # Vincul
 
-**Vincul** bonds AI chatbots and automation into the systems companies already run — CRMs on Java / Spring Boot / Angular / Vue, plus booking and invoice automation examples.
+**Vincul** replaces time-consuming work with AI — assistants and agents bonded into the CRMs and systems companies already run. Any domain. Remote global.
 
 - **Site:** [`website/`](website/) — Vue 3 + Vite + TypeScript + `motion-v`
 - **Business kit:** [`business-kit/`](business-kit/)
