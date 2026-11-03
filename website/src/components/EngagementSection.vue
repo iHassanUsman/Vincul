@@ -18,8 +18,8 @@ const plans = [
     price: 'Quoted after discovery',
     meta: 'Typical MVP 4–8 weeks',
     points: [
-      'CRM chatbot or automation MVP',
-      'Java upgrade tranche',
+      'AI assistant or automation MVP',
+      'Optional platform upgrade tranche',
       'Staging + production handover',
       'Runbooks and observability basics',
     ],
@@ -32,7 +32,7 @@ const plans = [
       'Priority bug/feature queue',
       'Model/provider changes',
       'Upgrade hypercare',
-      'Ops tuning for booking/invoice flows',
+      'Tuning for your highest-cost workflows',
     ],
   },
 ]

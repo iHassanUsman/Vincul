@@ -8,7 +8,7 @@ const items = [
   },
   {
     title: 'Least-privilege tools',
-    body: 'Chatbots and agents get explicit CRM/tool scopes — create lead, update ticket, book slot — not unbounded write access.',
+    body: 'Assistants and agents get explicit CRM/tool scopes — create lead, update ticket, draft a record — not unbounded write access.',
   },
   {
     title: 'Audit everything that writes',
@@ -20,11 +20,11 @@ const items = [
   },
   {
     title: 'GDPR-minded by default',
-    body: 'We discuss DPA needs, data residency, retention, and deletion up front — especially for medical and EU/UK buyers.',
+    body: 'We discuss DPA needs, data residency, retention, and deletion up front — especially for regulated and EU/UK buyers.',
   },
   {
     title: 'Upgrade safety nets',
-    body: 'Java cutovers use staging soak, canary, and a documented rollback image before production flips.',
+    body: 'Platform cutovers use staging soak, canary, and a documented rollback path before production flips.',
   },
 ]
 

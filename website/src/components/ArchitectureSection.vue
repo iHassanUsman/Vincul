@@ -15,88 +15,87 @@ const reduce =
         :inViewOptions="{ once: true, amount: 0.2 }"
         :transition="{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }"
       >
-        <p class="section-kicker">Architecture</p>
-        <h2 id="architecture-title" class="section-title">How we wire AI into your stack</h2>
+        <p class="section-kicker">How it works</p>
+        <h2 id="architecture-title" class="section-title">AI on your tools — any domain</h2>
         <p class="section-lead">
-          Simple diagrams of the patterns we implement — Spring Boot orchestration, CRM tools, staged JDK
-          upgrades, and booking/invoice automation examples.
+          Stack-agnostic patterns: chat and agents in your CRM, safe platform upgrades when you need them, and
+          automation for whatever repetitive work is burning hours.
         </p>
       </motion.div>
 
       <div class="diagrams">
         <figure>
-          <figcaption>CRM AI chatbot (Spring Boot + Angular/Vue)</figcaption>
+          <figcaption>AI assistant inside your existing systems</figcaption>
           <svg
             class="diagram"
             viewBox="0 0 640 220"
             role="img"
-            aria-label="User widget to Spring Boot AI layer to CRM APIs"
+            aria-label="User to AI layer to business systems"
           >
             <rect width="640" height="220" fill="#0f172a" rx="8" />
             <rect x="24" y="70" width="120" height="64" rx="6" fill="#0369a1" />
             <text x="84" y="100" text-anchor="middle" fill="#fff" font-size="13" font-family="Source Sans 3, sans-serif">
-              User / widget
+              Your users
             </text>
             <text x="84" y="118" text-anchor="middle" fill="#bae6fd" font-size="11" font-family="Source Sans 3, sans-serif">
-              Angular / Vue
+              chat · voice · app
             </text>
-            <path d="M150 102 H210" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrow)" />
+            <path d="M150 102 H210" stroke="#7dd3fc" stroke-width="2" />
             <rect x="220" y="50" width="170" height="104" rx="6" fill="#1e293b" stroke="#7dd3fc" />
             <text x="305" y="78" text-anchor="middle" fill="#fff" font-size="13" font-family="Source Sans 3, sans-serif">
-              Spring Boot AI layer
+              Vincul AI layer
             </text>
             <text x="305" y="98" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="Source Sans 3, sans-serif">
-              session · tools · audit
+              understand · decide
             </text>
             <text x="305" y="118" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="Source Sans 3, sans-serif">
-              model gateway
+              act with tools
             </text>
             <text x="305" y="138" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="Source Sans 3, sans-serif">
-              escalate to human
+              human when needed
             </text>
             <path d="M396 102 H450" stroke="#7dd3fc" stroke-width="2" />
             <rect x="460" y="36" width="150" height="50" rx="6" fill="#334155" />
             <text x="535" y="66" text-anchor="middle" fill="#fff" font-size="12" font-family="Source Sans 3, sans-serif">
-              CRM APIs
+              CRM / ERP
             </text>
             <rect x="460" y="100" width="150" height="50" rx="6" fill="#334155" />
             <text x="535" y="130" text-anchor="middle" fill="#fff" font-size="12" font-family="Source Sans 3, sans-serif">
-              Booking / billing
+              Your apps &amp; data
             </text>
             <rect x="460" y="164" width="150" height="36" rx="6" fill="#334155" />
             <text x="535" y="187" text-anchor="middle" fill="#fff" font-size="12" font-family="Source Sans 3, sans-serif">
-              Audit log
+              Audit trail
             </text>
             <path d="M545 86 V100" stroke="#7dd3fc" stroke-width="2" />
-            <defs>
-              <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                <path d="M0,0 L6,3 L0,6 Z" fill="#7dd3fc" />
-              </marker>
-            </defs>
           </svg>
         </figure>
 
         <figure>
-          <figcaption>Java upgrade path (staged, production-safe)</figcaption>
+          <figcaption>Safe platform upgrades (when legacy is the blocker)</figcaption>
+          <p class="diagram-note">
+            Purpose: upgrade live systems in small, reversible steps so production stays online — find risks first,
+            prove each stage in CI and staging, release to a small slice of traffic, keep a rollback ready.
+          </p>
           <svg
             class="diagram"
             viewBox="0 0 640 160"
             role="img"
-            aria-label="Java 8 to 11 to 17 to 21 to 24 upgrade stages"
+            aria-label="Staged upgrade from legacy to modern"
           >
             <rect width="640" height="160" fill="#0f172a" rx="8" />
-            <g v-for="(jdk, i) in ['8', '11', '17', '21', '24']" :key="jdk">
+            <g v-for="(step, i) in ['Map', 'Test', 'Upgrade', 'Soak', 'Go live']" :key="step">
               <circle :cx="70 + i * 125" cy="70" r="28" :fill="i === 4 ? '#0369a1' : '#1e293b'" stroke="#7dd3fc" />
               <text
                 :x="70 + i * 125"
                 y="75"
                 text-anchor="middle"
                 fill="#fff"
-                font-size="14"
+                font-size="12"
                 font-family="Syne, sans-serif"
                 font-weight="700"
               >
-                {{ jdk }}
+                {{ step }}
               </text>
               <path
                 v-if="i < 4"
@@ -106,48 +105,51 @@ const reduce =
               />
             </g>
             <text x="320" y="130" text-anchor="middle" fill="#94a3b8" font-size="12" font-family="Source Sans 3, sans-serif">
-              Inventory → CI matrix → library upgrades → soak → canary → rollback ready
+              Find risks → prove in CI → upgrade libraries → soak in staging → canary release → rollback ready
             </text>
           </svg>
         </figure>
 
         <figure>
-          <figcaption>Booking &amp; invoice automation example (ops pattern)</figcaption>
+          <figcaption>Any repetitive task → AI workflow</figcaption>
           <svg
             class="diagram"
             viewBox="0 0 640 180"
             role="img"
-            aria-label="Request to rules to systems to notify flow"
+            aria-label="Repetitive task to AI agent to systems to notify"
           >
             <rect width="640" height="180" fill="#0f172a" rx="8" />
             <rect x="20" y="60" width="110" height="56" rx="6" fill="#0369a1" />
-            <text x="75" y="93" text-anchor="middle" fill="#fff" font-size="12" font-family="Source Sans 3, sans-serif">
-              Request in
+            <text x="75" y="85" text-anchor="middle" fill="#fff" font-size="12" font-family="Source Sans 3, sans-serif">
+              Time-consuming
+            </text>
+            <text x="75" y="103" text-anchor="middle" fill="#bae6fd" font-size="11" font-family="Source Sans 3, sans-serif">
+              task / request
             </text>
             <path d="M136 88 H180" stroke="#7dd3fc" stroke-width="2" />
             <rect x="186" y="50" width="130" height="76" rx="6" fill="#1e293b" stroke="#7dd3fc" />
             <text x="251" y="80" text-anchor="middle" fill="#fff" font-size="12" font-family="Source Sans 3, sans-serif">
-              Rules / agent
+              AI agent
             </text>
             <text x="251" y="100" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="Source Sans 3, sans-serif">
-              + human override
+              + human approve
             </text>
             <path d="M322 88 H366" stroke="#7dd3fc" stroke-width="2" />
             <rect x="372" y="36" width="120" height="44" rx="6" fill="#334155" />
             <text x="432" y="63" text-anchor="middle" fill="#fff" font-size="12" font-family="Source Sans 3, sans-serif">
-              Calendar
+              Your tools
             </text>
             <rect x="372" y="92" width="120" height="44" rx="6" fill="#334155" />
             <text x="432" y="119" text-anchor="middle" fill="#fff" font-size="12" font-family="Source Sans 3, sans-serif">
-              Invoicing
+              Records update
             </text>
             <path d="M498 88 H534" stroke="#7dd3fc" stroke-width="2" />
             <rect x="540" y="60" width="80" height="56" rx="6" fill="#0369a1" />
             <text x="580" y="93" text-anchor="middle" fill="#fff" font-size="12" font-family="Source Sans 3, sans-serif">
-              Notify
+              Done
             </text>
             <text x="320" y="160" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="Source Sans 3, sans-serif">
-              Example pattern for clinics or logistics ops — adapted from scheduling/API delivery experience
+              Sales · support · ops · finance · admin — same pattern across domains
             </text>
           </svg>
         </figure>
@@ -177,6 +179,13 @@ figcaption {
   font-size: 1.05rem;
   margin-bottom: 0.65rem;
   color: var(--color-primary);
+}
+
+.diagram-note {
+  margin: 0 0 0.75rem;
+  color: var(--color-muted-foreground);
+  font-size: 0.98rem;
+  max-width: 52rem;
 }
 
 .diagram {

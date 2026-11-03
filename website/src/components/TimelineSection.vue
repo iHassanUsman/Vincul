@@ -20,7 +20,7 @@ const phases = [
   {
     when: 'Build phase',
     title: 'Integrate → Harden → Handover',
-    body: 'Typical chatbot or automation MVP: 4–8 weeks after discovery. Java upgrades: staged by module with canary windows.',
+    body: 'Typical AI assistant or automation MVP: 4–8 weeks after discovery. Platform upgrades: staged by module with canary windows.',
   },
 ]
 

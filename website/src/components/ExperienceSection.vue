@@ -9,15 +9,15 @@ const companies = [
   },
   {
     name: 'Alsharqi Holding Group',
-    line: 'Led platform modernization including Java backend upgrades, Vue 2→3, Kubernetes, and CI/CD.',
+    line: 'Led platform modernization, staged upgrades, cloud migration, and CI/CD across a large engineering org.',
   },
   {
     name: 'TABS Inc.',
-    line: 'Backend leadership for scheduling and ride-ops systems — logistics-adjacent reliability work.',
+    line: 'Backend leadership for scheduling and ride-ops systems — reliability work for ops-heavy workflows.',
   },
   {
     name: 'Insight',
-    line: 'Full-lifecycle Spring and Hibernate delivery across planning, build, test, and deployment.',
+    line: 'Full-lifecycle delivery across planning, build, test, and deployment on enterprise backends.',
   },
 ]
 
@@ -43,7 +43,7 @@ const reduce =
         <p class="section-kicker">Experience</p>
         <h2 id="experience-title" class="section-title">Delivery backgrounds we draw from</h2>
         <p class="section-lead">
-          Prior roles and platforms that shaped how Vincul integrates AI and modernizes stacks — listed as experience context, not as Vincul client logos.
+          Prior roles and platforms that shaped how Vincul ships AI automation and safe upgrades into live systems.
         </p>
       </motion.div>
 

@@ -2,11 +2,11 @@
 import SocialLinks from './SocialLinks.vue'
 
 const links = [
+  { href: '#problems', label: 'Why us' },
   { href: '#services', label: 'Services' },
   { href: '#proof', label: 'Proof' },
-  { href: '#architecture', label: 'Architecture' },
+  { href: '#architecture', label: 'How it works' },
   { href: '#timeline', label: 'Timeline' },
-  { href: '#security', label: 'Security' },
   { href: '#engagement', label: 'Pricing' },
   { href: '#contact', label: 'Contact' },
 ]
