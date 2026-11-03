@@ -79,7 +79,7 @@ const transition = { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const }
         :animate="enter"
         :transition="{ ...transition, delay: reduce ? 0 : 0.4 }"
       >
-        Recent delivery: cut peak API response from ~28s to under 200ms under load.
+        Recent delivery: AI chatbot in a logistics system that cut support team time.
       </motion.p>
     </div>
   </section>
