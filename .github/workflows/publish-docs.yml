@@ -6,6 +6,12 @@ on:
       - main
     paths-ignore:
       - "docs/**"
+      # Ignore root pages artifact churn so the publish commit does not re-trigger
+      - "index.html"
+      - "assets/**"
+      - "images/**"
+      - "favicon.svg"
+      - "icons.svg"
   workflow_dispatch:
 
 permissions:
@@ -39,24 +45,32 @@ jobs:
           VITE_BASE: /Vincul/
         run: npm run build
 
-      - name: Stage docs/
+      - name: Stage docs/ and root Pages artifacts
         run: |
           set -euo pipefail
           rm -rf docs
           mkdir docs
           cp -r website/dist/* docs/
-          # Ensure images exist even if Vite public copy is incomplete
-          mkdir -p docs/images
-          if [ -d website/public/images ]; then
-            cp -n website/public/images/*.jpg docs/images/ 2>/dev/null || true
-          fi
           touch docs/.nojekyll
+
+          # Legacy Pages source is main "/" — also publish built site at repo root
+          rm -rf assets
+          cp website/dist/index.html ./index.html
+          cp -r website/dist/assets ./assets
+          mkdir -p images
+          if [ -d website/dist/images ]; then
+            cp -r website/dist/images/. images/
+          elif [ -d website/public/images ]; then
+            cp -r website/public/images/. images/
+          fi
+          cp website/dist/favicon.svg ./favicon.svg 2>/dev/null || true
+          cp website/dist/icons.svg ./icons.svg 2>/dev/null || true
           touch .nojekyll
 
-      - name: Commit and push docs/
+      - name: Commit and push docs/ + root Pages files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: publish website build to docs/"
-          file_pattern: "docs .nojekyll"
+          commit_message: "chore: publish website build to docs/ and Pages root"
+          file_pattern: "docs .nojekyll index.html assets images favicon.svg icons.svg"
           commit_user_name: github-actions[bot]
           commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
