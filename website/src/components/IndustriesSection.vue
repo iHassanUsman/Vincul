@@ -16,11 +16,11 @@ const reduce =
         :inViewOptions="{ once: true, amount: 0.3 }"
         :transition="{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }"
       >
-        <p class="section-kicker">Example patterns</p>
-        <h2 id="examples-title" class="section-title">Booking &amp; invoice automation examples</h2>
+        <p class="section-kicker">Where it lands</p>
+        <h2 id="examples-title" class="section-title">Built for every domain that still runs on busywork</h2>
         <p class="section-lead">
-          Medical and logistics are example contexts — not exclusive niches. The same scheduling and API reliability
-          patterns from prior delivery apply wherever bookings and invoices create daily drag.
+          Healthcare admin, logistics, sales, support, finance — if your team repeats the same tasks every day, Vincul
+          designs AI to take that load while your systems stay the source of truth.
         </p>
       </motion.div>
 
@@ -28,29 +28,29 @@ const reduce =
         <article>
           <img
             :src="asset('images/medical.jpg')"
-            alt="Clinic front desk with appointment booking on screen"
+            alt="Professional admin workspace with scheduling on screen"
             width="960"
             height="540"
             loading="lazy"
           />
-          <h3>Example: clinic-style booking</h3>
+          <h3>Admin &amp; customer ops</h3>
           <p>
-            Capture appointment requests, confirm/remind, draft invoices from completed visits, sync status into CRM —
-            admin workflows only, with human override.
+            Intake, scheduling, reminders, document drafting, CRM updates — cut the front-desk and back-office grind
+            without replacing your software.
           </p>
         </article>
         <article>
           <img
             :src="asset('images/logistics.jpg')"
-            alt="Logistics dispatch room with route and shipment screens"
+            alt="Operations room with status screens"
             width="960"
             height="540"
             loading="lazy"
           />
-          <h3>Example: logistics-style ops</h3>
+          <h3>Sales, support &amp; field ops</h3>
           <p>
-            Pickup/booking requests into a dispatch queue, status chase, invoice drafts from delivered jobs — adapted
-            from scheduling and ride-ops reliability work.
+            Lead chase, ticket triage, dispatch follow-ups, status sync, reporting — AI handles the repetition; people
+            handle exceptions.
           </p>
         </article>
       </div>

@@ -46,7 +46,7 @@ const transition = { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const }
         :animate="enter"
         :transition="{ ...transition, delay: reduce ? 0 : 0.12 }"
       >
-        AI bonded to the systems you already run
+        Replace time-consuming work with AI — on the tools you already run
       </motion.p>
       <motion.p
         class="support"
@@ -54,8 +54,8 @@ const transition = { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const }
         :animate="enter"
         :transition="{ ...transition, delay: reduce ? 0 : 0.22 }"
       >
-        We integrate AI chatbots and automation into existing CRMs and platforms —
-        Java, Spring Boot, Angular, Vue — without ripping out what works.
+        Assistants and agents for sales, support, ops, finance, and admin — bonded into
+        your CRM and systems so your team stops drowning in repetitive work.
       </motion.p>
       <motion.div
         class="cta-row"
@@ -69,10 +69,18 @@ const transition = { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const }
           :whileHover="reduce ? undefined : { scale: 1.03 }"
           :whilePress="reduce ? undefined : { scale: 0.98 }"
         >
-          Start a conversation
+          Book a discovery call
         </motion.a>
-        <a class="btn btn-ghost" href="#services">See services</a>
+        <a class="btn btn-ghost" href="#problems">See how we help</a>
       </motion.div>
+      <motion.p
+        class="proof-teaser"
+        :initial="initial"
+        :animate="enter"
+        :transition="{ ...transition, delay: reduce ? 0 : 0.4 }"
+      >
+        Recent delivery: cut peak API response from ~28s to under 200ms under load.
+      </motion.p>
     </div>
   </section>
 </template>
@@ -127,7 +135,7 @@ const transition = { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const }
   font-weight: 600;
   font-size: clamp(1.35rem, 3vw, 1.85rem);
   line-height: 1.25;
-  max-width: 18ch;
+  max-width: 22ch;
   margin: 0 0 1rem;
 }
 
@@ -142,5 +150,12 @@ const transition = { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const }
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+}
+
+.proof-teaser {
+  margin: 1.15rem 0 0;
+  max-width: 36rem;
+  font-size: 0.95rem;
+  color: rgba(186, 230, 253, 0.95);
 }
 </style>

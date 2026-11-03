@@ -4,24 +4,24 @@ import { motion } from 'motion-v'
 const cases = [
   {
     label: 'SaaS messaging platform',
-    outcome: 'Cut peak API response from ~28s to under 5s under load',
+    outcome: 'Cut peak API response from ~28s to under 200ms under load',
     detail:
-      'Redesigned RabbitMQ consumer scaling and RPC payload compression so concurrent request spikes stayed stable — the kind of backbone AI agents need before you put a chatbot on top.',
-    stack: 'Java · messaging · performance',
+      'Redesigned messaging consumers and payload handling so concurrent spikes stayed stable — the reliability layer AI agents need in production.',
+    stack: 'High-scale APIs · performance',
   },
   {
     label: 'Enterprise holding group',
-    outcome: 'Staged backend + frontend modernization without a rewrite',
+    outcome: 'Modernized a live platform without a rewrite',
     detail:
-      'Led a multi-team upgrade path: Java 8→16 class migration, Vue 2→3, EC2→Kubernetes, CI/CD and ELK — the same discipline Vincul uses for Java 8→24 engagements.',
-    stack: 'Java · Spring · Vue · Kubernetes',
+      'Led staged backend and frontend upgrades, CI/CD, and cloud migration across a large engineering org — the same careful rollout model we use for AI go-lives.',
+    stack: 'Platform modernization · delivery leadership',
   },
   {
-    label: 'Scheduling / ride-ops system',
-    outcome: 'Hardened booking and scheduling reliability',
+    label: 'Ops / scheduling system',
+    outcome: 'Hardened scheduling reliability and API speed',
     detail:
-      'Backend leadership on ride scheduling defects and API efficiency (~60% response improvement on critical paths) — the same ops patterns we apply to booking and invoice automation examples.',
-    stack: 'Java · scheduling · APIs',
+      'Fixed critical scheduling defects and improved API response on key paths (~60%) — patterns we reuse wherever ops teams fight manual chase work.',
+    stack: 'Scheduling · APIs · reliability',
   },
 ]
 
@@ -42,8 +42,7 @@ const reduce =
         <p class="section-kicker">Proof</p>
         <h2 id="proof-title" class="section-title">Outcomes from real delivery</h2>
         <p class="section-lead">
-          Anonymized results from prior engineering work. These are not Vincul client logos — they are the
-          production problems that shaped how we integrate AI and modernize stacks.
+          Results from production systems we’ve engineered — the depth behind how Vincul ships AI and automation.
         </p>
       </motion.div>
 

@@ -4,20 +4,20 @@ import { asset } from '../base'
 
 const services = [
   {
-    title: 'CRM AI chatbots',
-    body: 'Embed conversational AI into the CRM your team already uses — Spring Boot backends with Angular or Vue front ends — so leads, tickets, and updates stay in one system of record.',
+    title: 'AI chat & assistants in your CRM',
+    body: 'Never miss a lead or ticket — assistants that answer, qualify, and update records inside the CRM and apps you already run.',
   },
   {
-    title: 'Java 8 → Java 24 upgrades',
-    body: 'Staged modernization paths that keep production stable: dependency audits, build toolchain moves, regression suites, and incremental cutovers from legacy Java 8 stacks toward modern LTS and Java 24.',
+    title: 'Replace repetitive busywork with AI',
+    body: 'Follow-ups, data entry, document handling, status chasing, reporting — any time-consuming task your team still does by hand.',
   },
   {
-    title: 'Booking & invoice automation',
-    body: 'Automate confirmations, invoicing, and follow-ups on top of tools you already run — illustrated with clinic- and logistics-style examples drawn from scheduling/API delivery experience.',
+    title: 'AI agents across your tools',
+    body: 'Agents that enrich, route, extract, and notify across systems — with human approval where it matters.',
   },
   {
-    title: 'AI agents & workflows',
-    body: 'Custom agents and automation that move work between systems: enrichment, routing, document extraction, and ops alerts without forcing a platform rewrite.',
+    title: 'Legacy platform modernization',
+    body: 'When old stacks block AI, we upgrade carefully in staged, reversible steps so you can ship automation on a stable base.',
   },
 ]
 
@@ -36,9 +36,9 @@ const reduce =
         :transition="{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }"
       >
         <p class="section-kicker">Services</p>
-        <h2 id="services-title" class="section-title">What we bond into your stack</h2>
+        <h2 id="services-title" class="section-title">What you get — outcomes, not buzzwords</h2>
         <p class="section-lead">
-          Remote-global delivery for companies that want AI and automation inside systems they already trust.
+          Remote delivery for any industry. We bond AI into the stack you trust so your people stop drowning in manual work.
         </p>
       </motion.div>
 

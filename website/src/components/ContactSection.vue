@@ -17,9 +17,9 @@ const reduce =
         :transition="{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }"
       >
         <p class="section-kicker">Contact</p>
-        <h2 id="contact-title" class="section-title">Tell us what to bond next</h2>
+        <h2 id="contact-title" class="section-title">Tell us what to automate next</h2>
         <p class="section-lead">
-          Share your CRM stack, Java version, or booking and invoice challenges. We’ll reply with a clear next step.
+          Share the time-consuming tasks your team still does by hand — and the tools you already use. We’ll reply with a clear next step.
         </p>
         <div class="contact-actions">
           <motion.a
